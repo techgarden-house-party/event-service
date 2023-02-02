@@ -52,11 +52,11 @@ jobs:
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/event-app-event-service:latest
         
     - name: Rancher Deploy
-      uses: yantadeu/rancher-deploy-action@v0.0.3
-      env:
-        RANCHER_ACCESS_KEY: ${{ secrets.RANCHER_USERNAME }}
-        RANCHER_SECRET_KEY: ${{ secrets.RANCHER_PASSWORD }}
-        RANCHER_URL_API: 'https://rancher.alikhani.io/v3'
-        SERVICE_NAME: 'event-service'
-        DOCKER_IMAGE:  ${{ secrets.DOCKERHUB_USERNAME }}/event-app-event-service:latest
-        DOCKER_IMAGE_LATEST:  ${{ secrets.DOCKERHUB_USERNAME }}/event-app-event-service:latest
+      uses: giautm/rancher-deploy-action@v0.1.11
+      with:
+        rancherUrlApi: ${{ secrets.RANCHER_URL_API }}
+        rancherAccessKey: ${{ secrets.RANCHER_ACCESS_KEY}}
+        rancherSecretKey: ${{ secrets.RANCHER_SECRET_KEY }}
+        dockerImage: ${{ secrets.DOCKERHUB_USERNAME }}/event-app-event-service:latest
+        serviceName: 'event-service'
+        namespaceId: 'event-app-dev'
