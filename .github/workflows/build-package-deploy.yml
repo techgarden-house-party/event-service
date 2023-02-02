@@ -59,3 +59,4 @@ jobs:
         RANCHER_URL_API: 'https://rancher.alikhani.io/v3'
         SERVICE_NAME: 'event-service'
         DOCKER_IMAGE:  ${{ secrets.DOCKERHUB_USERNAME }}/event-app-event-service:latest
+        DOCKER_IMAGE_LATEST:  ${{ secrets.DOCKERHUB_USERNAME }}/event-app-event-service:latest
