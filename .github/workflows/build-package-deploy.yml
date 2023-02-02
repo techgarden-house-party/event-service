@@ -50,4 +50,12 @@ jobs:
         context: .    
         push: true
         tags: ${{ secrets.DOCKERHUB_USERNAME }}/event-app-event-service:latest
-      
+        
+    - name: Rancher Deploy
+      uses: yantadeu/rancher-deploy-action@v0.0.3
+      env:
+        RANCHER_ACCESS_KEY: ${{ secrets.RANCHER_USERNAME }}
+        RANCHER_SECRET_KEY: ${{ secrets.RANCHER_PASSWORD }}
+        RANCHER_URL_API: 'https://rancher.alikhani.io/v3'
+        SERVICE_NAME: 'event-service'
+        DOCKER_IMAGE:  ${{ secrets.DOCKERHUB_USERNAME }}/event-app-event-service:latest
